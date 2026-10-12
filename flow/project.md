@@ -1,7 +1,7 @@
 ---
 schema: 1
 commands:
-  test: ""          # testes do guard, definido no T3
+  test: node tests/guard/run.mjs
   lint: ""
 review: standard
 profile: balanced

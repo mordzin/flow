@@ -1,0 +1,66 @@
+# Flow presets and profiles. Read by the /flow engine. Fixed in v1; projects
+# choose a name in flow/project.md (review, profile) and override per phase.
+
+# RV-002. Review type per phase: none | check | agent | human | agent+human
+presets:
+  light:
+    rounds: 1
+    discovery: none
+    plan: agent
+    execute: check
+    verify: check
+    doc: none
+    ship: human
+  standard:
+    rounds: 2
+    discovery: human
+    plan: agent+human
+    execute: agent
+    verify: check
+    doc: check
+    ship: human
+  strict:
+    rounds: 3
+    discovery: agent+human
+    plan: agent+human
+    execute: agent
+    verify: agent
+    doc: agent
+    ship: human
+
+# MD-001. model · effort per phase. max and fable stay out of profiles (MD-005).
+profiles:
+  fast:
+    discovery: [sonnet, low]
+    plan: [sonnet, medium]
+    execute: [sonnet, low]
+    verify: [haiku, low]
+    doc: [haiku, low]
+    ship: [haiku, low]
+  balanced:
+    discovery: [opus, medium]
+    plan: [opus, high]
+    execute: [sonnet, medium]
+    verify: [sonnet, low]
+    doc: [sonnet, low]
+    ship: [haiku, low]
+  deep:
+    discovery: [opus, high]
+    plan: [opus, xhigh]
+    execute: [opus, high]
+    verify: [sonnet, medium]
+    doc: [sonnet, medium]
+    ship: [haiku, low]
+
+# MD-006. Strength order: model family first, then effort.
+models: [haiku, sonnet, opus, fable]
+efforts: [low, medium, high, xhigh, max]
+
+# MD-004. Effort levels per model. Aliases resolve to the current generation,
+# which supports every level. Full IDs matching a pattern below support only
+# the listed levels; a model with an empty list takes no effort parameter.
+effort_support:
+  "claude-opus-4-6*": [low, medium, high, max]
+  "claude-sonnet-4-6*": [low, medium, high, max]
+  "claude-haiku-4*": []
+  "claude-*-4-5*": []

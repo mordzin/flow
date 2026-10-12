@@ -1,0 +1,1308 @@
+[
+ {
+  "name": "inactive: edit code allowed",
+  "input": {
+   "tool_name": "Edit",
+   "tool_input": {
+    "file_path": "$ROOT/src/a.ts"
+   }
+  },
+  "exit": 0
+ },
+ {
+  "name": "inactive: git push allowed",
+  "input": {
+   "tool_name": "Bash",
+   "tool_input": {
+    "command": "git push"
+   }
+  },
+  "exit": 0
+ },
+ {
+  "name": "inactive: reviewer rm allowed",
+  "input": {
+   "tool_name": "Bash",
+   "tool_input": {
+    "command": "rm -rf x"
+   },
+   "agent_type": "flow:reviewer"
+  },
+  "exit": 0
+ },
+ {
+  "name": "discovery: edit code",
+  "active": {
+   "change": "demo",
+   "phase": "discovery"
+  },
+  "input": {
+   "tool_name": "Edit",
+   "tool_input": {
+    "file_path": "$ROOT/src/a.ts"
+   }
+  },
+  "exit": 2,
+  "stderr": [
+   "GD-003",
+   "phase: discovery"
+  ]
+ },
+ {
+  "name": "discovery: edit flow/",
+  "active": {
+   "change": "demo",
+   "phase": "discovery"
+  },
+  "input": {
+   "tool_name": "Write",
+   "tool_input": {
+    "file_path": "$ROOT/flow/changes/demo.md"
+   }
+  },
+  "exit": 0
+ },
+ {
+  "name": "plan: edit code",
+  "active": {
+   "change": "demo",
+   "phase": "plan"
+  },
+  "input": {
+   "tool_name": "Edit",
+   "tool_input": {
+    "file_path": "$ROOT/src/a.ts"
+   }
+  },
+  "exit": 2,
+  "stderr": [
+   "GD-003",
+   "phase: plan"
+  ]
+ },
+ {
+  "name": "plan: edit flow/",
+  "active": {
+   "change": "demo",
+   "phase": "plan"
+  },
+  "input": {
+   "tool_name": "Write",
+   "tool_input": {
+    "file_path": "$ROOT/flow/changes/demo.md"
+   }
+  },
+  "exit": 0
+ },
+ {
+  "name": "execute: edit code",
+  "active": {
+   "change": "demo",
+   "phase": "execute"
+  },
+  "input": {
+   "tool_name": "Edit",
+   "tool_input": {
+    "file_path": "$ROOT/src/a.ts"
+   }
+  },
+  "exit": 0
+ },
+ {
+  "name": "execute: edit flow/",
+  "active": {
+   "change": "demo",
+   "phase": "execute"
+  },
+  "input": {
+   "tool_name": "Write",
+   "tool_input": {
+    "file_path": "$ROOT/flow/changes/demo.md"
+   }
+  },
+  "exit": 0
+ },
+ {
+  "name": "verify: edit code",
+  "active": {
+   "change": "demo",
+   "phase": "verify"
+  },
+  "input": {
+   "tool_name": "Edit",
+   "tool_input": {
+    "file_path": "$ROOT/src/a.ts"
+   }
+  },
+  "exit": 2,
+  "stderr": [
+   "GD-003",
+   "phase: verify"
+  ]
+ },
+ {
+  "name": "verify: edit flow/",
+  "active": {
+   "change": "demo",
+   "phase": "verify"
+  },
+  "input": {
+   "tool_name": "Write",
+   "tool_input": {
+    "file_path": "$ROOT/flow/changes/demo.md"
+   }
+  },
+  "exit": 0
+ },
+ {
+  "name": "doc: edit code",
+  "active": {
+   "change": "demo",
+   "phase": "doc"
+  },
+  "input": {
+   "tool_name": "Edit",
+   "tool_input": {
+    "file_path": "$ROOT/src/a.ts"
+   }
+  },
+  "exit": 2,
+  "stderr": [
+   "GD-003",
+   "phase: doc"
+  ]
+ },
+ {
+  "name": "doc: edit flow/",
+  "active": {
+   "change": "demo",
+   "phase": "doc"
+  },
+  "input": {
+   "tool_name": "Write",
+   "tool_input": {
+    "file_path": "$ROOT/flow/changes/demo.md"
+   }
+  },
+  "exit": 0
+ },
+ {
+  "name": "ship: edit code",
+  "active": {
+   "change": "demo",
+   "phase": "ship"
+  },
+  "input": {
+   "tool_name": "Edit",
+   "tool_input": {
+    "file_path": "$ROOT/src/a.ts"
+   }
+  },
+  "exit": 2,
+  "stderr": [
+   "GD-003",
+   "phase: ship"
+  ]
+ },
+ {
+  "name": "ship: edit flow/",
+  "active": {
+   "change": "demo",
+   "phase": "ship"
+  },
+  "input": {
+   "tool_name": "Write",
+   "tool_input": {
+    "file_path": "$ROOT/flow/changes/demo.md"
+   }
+  },
+  "exit": 0
+ },
+ {
+  "name": "plan: GD-003 scenario message",
+  "active": {
+   "change": "demo",
+   "phase": "plan"
+  },
+  "input": {
+   "tool_name": "Edit",
+   "tool_input": {
+    "file_path": "$ROOT/src/auth.ts"
+   }
+  },
+  "exit": 2,
+  "stderr": [
+   "Flow guard blocked: Edit on src/auth.ts",
+   "Rule: GD-003 (phase: plan)",
+   "To proceed:",
+   "execute phase"
+  ]
+ },
+ {
+  "name": "doc: README",
+  "active": {
+   "change": "demo",
+   "phase": "doc"
+  },
+  "input": {
+   "tool_name": "Edit",
+   "tool_input": {
+    "file_path": "$ROOT/README.md"
+   }
+  },
+  "exit": 0
+ },
+ {
+  "name": "doc: CHANGELOG",
+  "active": {
+   "change": "demo",
+   "phase": "doc"
+  },
+  "input": {
+   "tool_name": "Write",
+   "tool_input": {
+    "file_path": "$ROOT/CHANGELOG.md"
+   }
+  },
+  "exit": 0
+ },
+ {
+  "name": "doc: docs/**",
+  "active": {
+   "change": "demo",
+   "phase": "doc"
+  },
+  "input": {
+   "tool_name": "Edit",
+   "tool_input": {
+    "file_path": "$ROOT/docs/guide/x.md"
+   }
+  },
+  "exit": 0
+ },
+ {
+  "name": "doc: nested README blocked",
+  "active": {
+   "change": "demo",
+   "phase": "doc"
+  },
+  "input": {
+   "tool_name": "Edit",
+   "tool_input": {
+    "file_path": "$ROOT/pkg/README.md"
+   }
+  },
+  "exit": 2,
+  "stderr": [
+   "GD-003"
+  ]
+ },
+ {
+  "name": "plan: README blocked",
+  "active": {
+   "change": "demo",
+   "phase": "plan"
+  },
+  "input": {
+   "tool_name": "Edit",
+   "tool_input": {
+    "file_path": "$ROOT/README.md"
+   }
+  },
+  "exit": 2,
+  "stderr": [
+   "GD-003"
+  ]
+ },
+ {
+  "name": "plan: path outside project",
+  "active": {
+   "change": "demo",
+   "phase": "plan"
+  },
+  "input": {
+   "tool_name": "Write",
+   "tool_input": {
+    "file_path": "/etc/hosts"
+   }
+  },
+  "exit": 2,
+  "stderr": [
+   "GD-003"
+  ]
+ },
+ {
+  "name": "plan: traversal out of flow/",
+  "active": {
+   "change": "demo",
+   "phase": "plan"
+  },
+  "input": {
+   "tool_name": "Edit",
+   "tool_input": {
+    "file_path": "$ROOT/flow/../src/a.ts"
+   }
+  },
+  "exit": 2,
+  "stderr": [
+   "GD-003"
+  ]
+ },
+ {
+  "name": "plan: MultiEdit code",
+  "active": {
+   "change": "demo",
+   "phase": "plan"
+  },
+  "input": {
+   "tool_name": "MultiEdit",
+   "tool_input": {
+    "file_path": "$ROOT/src/a.ts"
+   }
+  },
+  "exit": 2,
+  "stderr": [
+   "GD-003"
+  ]
+ },
+ {
+  "name": "plan: NotebookEdit code",
+  "active": {
+   "change": "demo",
+   "phase": "plan"
+  },
+  "input": {
+   "tool_name": "NotebookEdit",
+   "tool_input": {
+    "notebook_path": "$ROOT/nb.ipynb"
+   }
+  },
+  "exit": 2,
+  "stderr": [
+   "GD-003"
+  ]
+ },
+ {
+  "name": "plan: Read allowed",
+  "active": {
+   "change": "demo",
+   "phase": "plan"
+  },
+  "input": {
+   "tool_name": "Read",
+   "tool_input": {
+    "file_path": "$ROOT/src/a.ts"
+   }
+  },
+  "exit": 0
+ },
+ {
+  "name": "discovery: git commit",
+  "active": {
+   "change": "demo",
+   "phase": "discovery"
+  },
+  "input": {
+   "tool_name": "Bash",
+   "tool_input": {
+    "command": "git commit -m x"
+   }
+  },
+  "exit": 2,
+  "stderr": [
+   "git commit",
+   "GD-003"
+  ]
+ },
+ {
+  "name": "plan: git commit",
+  "active": {
+   "change": "demo",
+   "phase": "plan"
+  },
+  "input": {
+   "tool_name": "Bash",
+   "tool_input": {
+    "command": "git commit -m x"
+   }
+  },
+  "exit": 2,
+  "stderr": [
+   "git commit",
+   "GD-003"
+  ]
+ },
+ {
+  "name": "execute: git commit",
+  "active": {
+   "change": "demo",
+   "phase": "execute"
+  },
+  "input": {
+   "tool_name": "Bash",
+   "tool_input": {
+    "command": "git commit -m x"
+   }
+  },
+  "exit": 0
+ },
+ {
+  "name": "verify: git commit",
+  "active": {
+   "change": "demo",
+   "phase": "verify"
+  },
+  "input": {
+   "tool_name": "Bash",
+   "tool_input": {
+    "command": "git commit -m x"
+   }
+  },
+  "exit": 2,
+  "stderr": [
+   "git commit",
+   "GD-003"
+  ]
+ },
+ {
+  "name": "doc: git commit",
+  "active": {
+   "change": "demo",
+   "phase": "doc"
+  },
+  "input": {
+   "tool_name": "Bash",
+   "tool_input": {
+    "command": "git commit -m x"
+   }
+  },
+  "exit": 2,
+  "stderr": [
+   "git commit",
+   "GD-003"
+  ]
+ },
+ {
+  "name": "ship: git commit",
+  "active": {
+   "change": "demo",
+   "phase": "ship"
+  },
+  "input": {
+   "tool_name": "Bash",
+   "tool_input": {
+    "command": "git commit -m x"
+   }
+  },
+  "exit": 0
+ },
+ {
+  "name": "plan: git -C commit",
+  "active": {
+   "change": "demo",
+   "phase": "plan"
+  },
+  "input": {
+   "tool_name": "Bash",
+   "tool_input": {
+    "command": "git -C . commit -m x"
+   }
+  },
+  "exit": 2,
+  "stderr": [
+   "GD-003"
+  ]
+ },
+ {
+  "name": "plan: chained commit",
+  "active": {
+   "change": "demo",
+   "phase": "plan"
+  },
+  "input": {
+   "tool_name": "Bash",
+   "tool_input": {
+    "command": "npm test && git commit -am x"
+   }
+  },
+  "exit": 2,
+  "stderr": [
+   "GD-003"
+  ]
+ },
+ {
+  "name": "plan: env prefix commit",
+  "active": {
+   "change": "demo",
+   "phase": "plan"
+  },
+  "input": {
+   "tool_name": "Bash",
+   "tool_input": {
+    "command": "GIT_AUTHOR_NAME=x git commit -m y"
+   }
+  },
+  "exit": 2,
+  "stderr": [
+   "GD-003"
+  ]
+ },
+ {
+  "name": "plan: git log --grep commit allowed",
+  "active": {
+   "change": "demo",
+   "phase": "plan"
+  },
+  "input": {
+   "tool_name": "Bash",
+   "tool_input": {
+    "command": "git log --grep commit"
+   }
+  },
+  "exit": 0
+ },
+ {
+  "name": "plan: free bash",
+  "active": {
+   "change": "demo",
+   "phase": "plan"
+  },
+  "input": {
+   "tool_name": "Bash",
+   "tool_input": {
+    "command": "npm install && ls"
+   }
+  },
+  "exit": 0
+ },
+ {
+  "name": "plan: gh pr view blocked",
+  "active": {
+   "change": "demo",
+   "phase": "plan"
+  },
+  "input": {
+   "tool_name": "Bash",
+   "tool_input": {
+    "command": "gh pr view 1"
+   }
+  },
+  "exit": 2,
+  "stderr": [
+   "GD-003"
+  ]
+ },
+ {
+  "name": "ship: gh pr view allowed",
+  "active": {
+   "change": "demo",
+   "phase": "ship"
+  },
+  "input": {
+   "tool_name": "Bash",
+   "tool_input": {
+    "command": "gh pr view 1"
+   }
+  },
+  "exit": 0
+ },
+ {
+  "name": "discovery: git push",
+  "active": {
+   "change": "demo",
+   "phase": "discovery"
+  },
+  "approved": [
+   "discovery",
+   "plan",
+   "execute",
+   "verify",
+   "doc"
+  ],
+  "input": {
+   "tool_name": "Bash",
+   "tool_input": {
+    "command": "git push -u origin HEAD"
+   }
+  },
+  "exit": 2,
+  "stderr": [
+   "git push",
+   "GD-005"
+  ]
+ },
+ {
+  "name": "plan: git push",
+  "active": {
+   "change": "demo",
+   "phase": "plan"
+  },
+  "approved": [
+   "discovery",
+   "plan",
+   "execute",
+   "verify",
+   "doc"
+  ],
+  "input": {
+   "tool_name": "Bash",
+   "tool_input": {
+    "command": "git push -u origin HEAD"
+   }
+  },
+  "exit": 2,
+  "stderr": [
+   "git push",
+   "GD-005"
+  ]
+ },
+ {
+  "name": "execute: git push",
+  "active": {
+   "change": "demo",
+   "phase": "execute"
+  },
+  "approved": [
+   "discovery",
+   "plan",
+   "execute",
+   "verify",
+   "doc"
+  ],
+  "input": {
+   "tool_name": "Bash",
+   "tool_input": {
+    "command": "git push -u origin HEAD"
+   }
+  },
+  "exit": 2,
+  "stderr": [
+   "git push",
+   "GD-005"
+  ]
+ },
+ {
+  "name": "verify: git push",
+  "active": {
+   "change": "demo",
+   "phase": "verify"
+  },
+  "approved": [
+   "discovery",
+   "plan",
+   "execute",
+   "verify",
+   "doc"
+  ],
+  "input": {
+   "tool_name": "Bash",
+   "tool_input": {
+    "command": "git push -u origin HEAD"
+   }
+  },
+  "exit": 2,
+  "stderr": [
+   "git push",
+   "GD-005"
+  ]
+ },
+ {
+  "name": "doc: git push",
+  "active": {
+   "change": "demo",
+   "phase": "doc"
+  },
+  "approved": [
+   "discovery",
+   "plan",
+   "execute",
+   "verify",
+   "doc"
+  ],
+  "input": {
+   "tool_name": "Bash",
+   "tool_input": {
+    "command": "git push -u origin HEAD"
+   }
+  },
+  "exit": 2,
+  "stderr": [
+   "git push",
+   "GD-005"
+  ]
+ },
+ {
+  "name": "execute: gh pr create",
+  "active": {
+   "change": "demo",
+   "phase": "execute"
+  },
+  "input": {
+   "tool_name": "Bash",
+   "tool_input": {
+    "command": "gh pr create --fill"
+   }
+  },
+  "exit": 2,
+  "stderr": [
+   "gh pr create",
+   "GD-005"
+  ]
+ },
+ {
+  "name": "ship: push without approvals",
+  "active": {
+   "change": "demo",
+   "phase": "ship"
+  },
+  "approved": [
+   "discovery",
+   "plan",
+   "execute"
+  ],
+  "input": {
+   "tool_name": "Bash",
+   "tool_input": {
+    "command": "git push"
+   }
+  },
+  "exit": 2,
+  "stderr": [
+   "GD-005",
+   "verify, doc"
+  ]
+ },
+ {
+  "name": "ship: push without change file",
+  "active": {
+   "change": "demo",
+   "phase": "ship"
+  },
+  "input": {
+   "tool_name": "Bash",
+   "tool_input": {
+    "command": "git push"
+   }
+  },
+  "exit": 2,
+  "stderr": [
+   "GD-005",
+   "not found"
+  ]
+ },
+ {
+  "name": "ship: push approved",
+  "active": {
+   "change": "demo",
+   "phase": "ship"
+  },
+  "approved": [
+   "discovery",
+   "plan",
+   "execute",
+   "verify",
+   "doc"
+  ],
+  "input": {
+   "tool_name": "Bash",
+   "tool_input": {
+    "command": "git push -u origin HEAD"
+   }
+  },
+  "exit": 0
+ },
+ {
+  "name": "ship: pr create approved",
+  "active": {
+   "change": "demo",
+   "phase": "ship"
+  },
+  "approved": [
+   "discovery",
+   "plan",
+   "execute",
+   "verify",
+   "doc"
+  ],
+  "input": {
+   "tool_name": "Bash",
+   "tool_input": {
+    "command": "gh pr create --fill"
+   }
+  },
+  "exit": 0
+ },
+ {
+  "name": "ship: push approved after archive",
+  "active": {
+   "change": "demo",
+   "phase": "ship"
+  },
+  "approved": [
+   "discovery",
+   "plan",
+   "execute",
+   "verify",
+   "doc"
+  ],
+  "archived": true,
+  "input": {
+   "tool_name": "Bash",
+   "tool_input": {
+    "command": "git push"
+   }
+  },
+  "exit": 0
+ },
+ {
+  "name": "reviewer: Edit blocked",
+  "active": {
+   "change": "demo",
+   "phase": "plan"
+  },
+  "input": {
+   "tool_name": "Edit",
+   "tool_input": {
+    "file_path": "$ROOT/flow/changes/demo.md"
+   },
+   "agent_type": "flow:reviewer"
+  },
+  "exit": 2,
+  "stderr": [
+   "GD-004"
+  ]
+ },
+ {
+  "name": "reviewer: Write blocked in execute",
+  "active": {
+   "change": "demo",
+   "phase": "execute"
+  },
+  "input": {
+   "tool_name": "Write",
+   "tool_input": {
+    "file_path": "$ROOT/src/a.ts"
+   },
+   "agent_type": "flow:reviewer"
+  },
+  "exit": 2,
+  "stderr": [
+   "GD-004"
+  ]
+ },
+ {
+  "name": "reviewer: npm test",
+  "active": {
+   "change": "demo",
+   "phase": "execute"
+  },
+  "input": {
+   "tool_name": "Bash",
+   "tool_input": {
+    "command": "npm test"
+   },
+   "agent_type": "flow:reviewer"
+  },
+  "exit": 0
+ },
+ {
+  "name": "reviewer: npm run lint",
+  "active": {
+   "change": "demo",
+   "phase": "execute"
+  },
+  "input": {
+   "tool_name": "Bash",
+   "tool_input": {
+    "command": "npm run lint"
+   },
+   "agent_type": "flow:reviewer"
+  },
+  "exit": 0
+ },
+ {
+  "name": "reviewer: git diff HEAD~1",
+  "active": {
+   "change": "demo",
+   "phase": "execute"
+  },
+  "input": {
+   "tool_name": "Bash",
+   "tool_input": {
+    "command": "git diff HEAD~1"
+   },
+   "agent_type": "flow:reviewer"
+  },
+  "exit": 0
+ },
+ {
+  "name": "reviewer: git log --oneline -5",
+  "active": {
+   "change": "demo",
+   "phase": "execute"
+  },
+  "input": {
+   "tool_name": "Bash",
+   "tool_input": {
+    "command": "git log --oneline -5"
+   },
+   "agent_type": "flow:reviewer"
+  },
+  "exit": 0
+ },
+ {
+  "name": "reviewer: git show HEAD",
+  "active": {
+   "change": "demo",
+   "phase": "execute"
+  },
+  "input": {
+   "tool_name": "Bash",
+   "tool_input": {
+    "command": "git show HEAD"
+   },
+   "agent_type": "flow:reviewer"
+  },
+  "exit": 0
+ },
+ {
+  "name": "reviewer: git status",
+  "active": {
+   "change": "demo",
+   "phase": "execute"
+  },
+  "input": {
+   "tool_name": "Bash",
+   "tool_input": {
+    "command": "git status"
+   },
+   "agent_type": "flow:reviewer"
+  },
+  "exit": 0
+ },
+ {
+  "name": "reviewer: cat src/a.ts",
+  "active": {
+   "change": "demo",
+   "phase": "execute"
+  },
+  "input": {
+   "tool_name": "Bash",
+   "tool_input": {
+    "command": "cat src/a.ts"
+   },
+   "agent_type": "flow:reviewer"
+  },
+  "exit": 0
+ },
+ {
+  "name": "reviewer: ls -la",
+  "active": {
+   "change": "demo",
+   "phase": "execute"
+  },
+  "input": {
+   "tool_name": "Bash",
+   "tool_input": {
+    "command": "ls -la"
+   },
+   "agent_type": "flow:reviewer"
+  },
+  "exit": 0
+ },
+ {
+  "name": "reviewer: head -20 a",
+  "active": {
+   "change": "demo",
+   "phase": "execute"
+  },
+  "input": {
+   "tool_name": "Bash",
+   "tool_input": {
+    "command": "head -20 a"
+   },
+   "agent_type": "flow:reviewer"
+  },
+  "exit": 0
+ },
+ {
+  "name": "reviewer: tail a",
+  "active": {
+   "change": "demo",
+   "phase": "execute"
+  },
+  "input": {
+   "tool_name": "Bash",
+   "tool_input": {
+    "command": "tail a"
+   },
+   "agent_type": "flow:reviewer"
+  },
+  "exit": 0
+ },
+ {
+  "name": "reviewer: wc -l a",
+  "active": {
+   "change": "demo",
+   "phase": "execute"
+  },
+  "input": {
+   "tool_name": "Bash",
+   "tool_input": {
+    "command": "wc -l a"
+   },
+   "agent_type": "flow:reviewer"
+  },
+  "exit": 0
+ },
+ {
+  "name": "reviewer: rm -rf src blocked",
+  "active": {
+   "change": "demo",
+   "phase": "execute"
+  },
+  "input": {
+   "tool_name": "Bash",
+   "tool_input": {
+    "command": "rm -rf src"
+   },
+   "agent_type": "flow:reviewer"
+  },
+  "exit": 2,
+  "stderr": [
+   "GD-004"
+  ]
+ },
+ {
+  "name": "reviewer: npm install blocked",
+  "active": {
+   "change": "demo",
+   "phase": "execute"
+  },
+  "input": {
+   "tool_name": "Bash",
+   "tool_input": {
+    "command": "npm install"
+   },
+   "agent_type": "flow:reviewer"
+  },
+  "exit": 2,
+  "stderr": [
+   "GD-004"
+  ]
+ },
+ {
+  "name": "reviewer: cat a > b blocked",
+  "active": {
+   "change": "demo",
+   "phase": "execute"
+  },
+  "input": {
+   "tool_name": "Bash",
+   "tool_input": {
+    "command": "cat a > b"
+   },
+   "agent_type": "flow:reviewer"
+  },
+  "exit": 2,
+  "stderr": [
+   "GD-004"
+  ]
+ },
+ {
+  "name": "reviewer: npm test; rm x blocked",
+  "active": {
+   "change": "demo",
+   "phase": "execute"
+  },
+  "input": {
+   "tool_name": "Bash",
+   "tool_input": {
+    "command": "npm test; rm x"
+   },
+   "agent_type": "flow:reviewer"
+  },
+  "exit": 2,
+  "stderr": [
+   "GD-004"
+  ]
+ },
+ {
+  "name": "reviewer: git diff --output=x blocked",
+  "active": {
+   "change": "demo",
+   "phase": "execute"
+  },
+  "input": {
+   "tool_name": "Bash",
+   "tool_input": {
+    "command": "git diff --output=x"
+   },
+   "agent_type": "flow:reviewer"
+  },
+  "exit": 2,
+  "stderr": [
+   "GD-004"
+  ]
+ },
+ {
+  "name": "reviewer: git commit -m x blocked",
+  "active": {
+   "change": "demo",
+   "phase": "execute"
+  },
+  "input": {
+   "tool_name": "Bash",
+   "tool_input": {
+    "command": "git commit -m x"
+   },
+   "agent_type": "flow:reviewer"
+  },
+  "exit": 2,
+  "stderr": [
+   "GD-004"
+  ]
+ },
+ {
+  "name": "reviewer: git push blocked",
+  "active": {
+   "change": "demo",
+   "phase": "execute"
+  },
+  "input": {
+   "tool_name": "Bash",
+   "tool_input": {
+    "command": "git push"
+   },
+   "agent_type": "flow:reviewer"
+  },
+  "exit": 2,
+  "stderr": [
+   "GD-004"
+  ]
+ },
+ {
+  "name": "reviewer: echo $(rm x) blocked",
+  "active": {
+   "change": "demo",
+   "phase": "execute"
+  },
+  "input": {
+   "tool_name": "Bash",
+   "tool_input": {
+    "command": "echo $(rm x)"
+   },
+   "agent_type": "flow:reviewer"
+  },
+  "exit": 2,
+  "stderr": [
+   "GD-004"
+  ]
+ },
+ {
+  "name": "reviewer: sed -i s/a/b/ f blocked",
+  "active": {
+   "change": "demo",
+   "phase": "execute"
+  },
+  "input": {
+   "tool_name": "Bash",
+   "tool_input": {
+    "command": "sed -i s/a/b/ f"
+   },
+   "agent_type": "flow:reviewer"
+  },
+  "exit": 2,
+  "stderr": [
+   "GD-004"
+  ]
+ },
+ {
+  "name": "reviewer: Read allowed",
+  "active": {
+   "change": "demo",
+   "phase": "verify"
+  },
+  "input": {
+   "tool_name": "Read",
+   "tool_input": {
+    "file_path": "$ROOT/a"
+   },
+   "agent_type": "flow:reviewer"
+  },
+  "exit": 0
+ },
+ {
+  "name": "non-reviewer agent follows phase policy",
+  "active": {
+   "change": "demo",
+   "phase": "verify"
+  },
+  "input": {
+   "tool_name": "Edit",
+   "tool_input": {
+    "file_path": "$ROOT/src/a.ts"
+   },
+   "agent_type": "flow:worker"
+  },
+  "exit": 2,
+  "stderr": [
+   "GD-003"
+  ]
+ },
+ {
+  "name": "invalid .active blocks",
+  "active": "{not json",
+  "input": {
+   "tool_name": "Edit",
+   "tool_input": {
+    "file_path": "$ROOT/flow/x.md"
+   }
+  },
+  "exit": 2,
+  "stderr": [
+   "GD-007"
+  ]
+ },
+ {
+  "name": "unknown phase blocks",
+  "active": {
+   "change": "demo",
+   "phase": "deploy"
+  },
+  "input": {
+   "tool_name": "Edit",
+   "tool_input": {
+    "file_path": "$ROOT/flow/x.md"
+   }
+  },
+  "exit": 2,
+  "stderr": [
+   "GD-007"
+  ]
+ },
+ {
+  "name": "empty stdin with .active",
+  "active": {
+   "change": "demo",
+   "phase": "plan"
+  },
+  "input": {},
+  "exit": 0
+ },
+ {
+  "name": "session start removes orphan .active",
+  "active": {
+   "change": "demo",
+   "phase": "plan"
+  },
+  "args": [
+   "--session-start"
+  ],
+  "activeRemoved": true,
+  "input": {
+   "hook_event_name": "SessionStart"
+  },
+  "exit": 0
+ }
+]

@@ -1,0 +1,11 @@
+{
+  "name": "flow",
+  "version": "0.1.0",
+  "description": "Spec-driven development in six phases (discovery → plan → execute → verify → doc → ship), one subagent per phase, independent review and a living spec.",
+  "author": {
+    "name": "Lucas Mordzin",
+    "url": "https://github.com/mordzin"
+  },
+  "repository": "https://github.com/mordzin/flow",
+  "license": "MIT"
+}

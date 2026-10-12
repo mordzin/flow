@@ -1,0 +1,28 @@
+{
+  "description": "Flow guard: enforces phase policy while a Flow phase runs (GD-001).",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"${CLAUDE_PLUGIN_ROOT}/hooks/guard.mjs\"",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "matcher": "startup",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if command -v node >/dev/null 2>&1; then node \"${CLAUDE_PLUGIN_ROOT}/hooks/guard.mjs\" --session-start; elif [ -d \"${CLAUDE_PROJECT_DIR:-.}/flow\" ]; then printf '%s\\n' '{\"systemMessage\":\"Flow: node not found in PATH, so the Flow guard is OFF (phase rules are not enforced). Install Node.js 18+ (https://nodejs.org) and restart Claude Code.\"}'; fi",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
+}

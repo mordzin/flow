@@ -1,9 +1,9 @@
 ---
 id: v1-core
-phase: plan
+phase: execute
 status: waiting-you
-approved: [discovery]
-round: 2
+approved: [discovery, plan]
+round: 1
 review: standard
 specs: [workflow, workspace, engine, review, models, guard]
 created: 2026-10-12
@@ -101,6 +101,12 @@ Decisões de desenho tomadas na revisão deste Plan:
 8. **Custo em `strict` + `deep`.** Mitigação: o Log registra modelo e esforço de cada execução, dando visibilidade do gasto.
 9. **SKILL.md do engine crescer demais.** Mitigação: o engine só orquestra; o "como fazer" de cada fase mora em `phases/`.
 
+**Resultado do T1 (12/10/2026).** (a) e (b) confirmadas pela documentação do Claude Code: hooks de plugin rodam dentro de subagentes e recebem `agent_type` com o nome qualificado (`flow:reviewer`); `model` e `effort` por chamada existem desde a v2.1.292 (instalada: 2.1.296). (c) confirmada pela sonda `tests/premises/run.sh`, rodada no terminal: a skill disparou `probe:probe` com `model: haiku` (resposta `claude-haiku-5-5`), e o `PreToolUse` dentro do subagente recebeu `"agent_type":"probe:probe"`, o que também confirma (a) e (b) na prática. Achados que mudam o desenho:
+
+- Skill de plugin sempre leva o prefixo, então o comando é `/flow:flow`, e não `/flow` (WF-002). Registrado no README como limite conhecido.
+- Na ferramenta de subagente desta versão, `model` aceita só aliases (`haiku`, `sonnet`, `opus`, `fable`). Com ID completo em `phases.<fase>.model`, o engine passa a família e registra o ajuste (MD-003).
+- Os aliases atuais suportam os cinco níveis de esforço; o fallback do MD-004 só age em IDs completos de modelos anteriores (tabela `effort_support` em `presets.yaml`).
+
 ### Dúvidas
 
 Nenhuma em aberto. Decididas em 12/10/2026:
@@ -125,16 +131,16 @@ Os IDs retirados nunca foram ativados e não são reutilizados (WS-004).
 
 ### Tasks
 
-- [ ] **T1** Confirmar com um script mínimo: (a) `agent_type` chega no `PreToolUse` dentro de subagente de plugin; (b) `model` e `effort` por chamada de subagente; (c) a skill dispara subagentes quando instruída. Registrar o resultado em Riscos e ajustar o Plan se alguma falhar. — premissas de EN-001, GD-004, MD-003
+- [x] **T1** Confirmar com um script mínimo: (a) `agent_type` chega no `PreToolUse` dentro de subagente de plugin; (b) `model` e `effort` por chamada de subagente; (c) a skill dispara subagentes quando instruída. Registrar o resultado em Riscos e ajustar o Plan se alguma falhar. — premissas de EN-001, GD-004, MD-003
 - [ ] **T2** Repositório: `git init`, scaffold, `plugin.json`, mover `flow-v1-spec/flow/` para `flow/` e publicar no GitHub como marketplace. — WS-001
-- [ ] **T3** Guard: `hooks.json`, `guard.mjs`, checagem do Node no `SessionStart` e testes por fixture cobrindo a tabela do GD-003, o reviewer, o gate do Ship e as mensagens. `commands.test` passa a rodar esses testes. — GD-001, GD-002, GD-003, GD-004, GD-005, GD-006, GD-007
-- [ ] **T4** Templates `project.md`, `spec.md` e `change.md` com os schemas. — WS-003, WS-004, WS-005, WS-006, WS-007
-- [ ] **T5** Agentes `worker` e `reviewer`; `presets.yaml` com os presets e perfis. — EN-001, RV-002, RV-008, MD-001
-- [ ] **T6** Fatia vertical do `/flow`: inicialização, nova mudança, `phases/discovery.md` e `phases/plan.md`, perguntas abertas, gate, prompt de delegação, review `agent + human`, rodadas, `.active`, Log, resumo e falhas. — WF-002, WF-004, WF-006, WF-007, WF-009, WS-002, WS-010, EN-002, EN-003, EN-004, EN-005, EN-006, EN-007, EN-008, EN-010, EN-011, RV-001, RV-007, RV-010, RV-011
+- [x] **T3** Guard: `hooks.json`, `guard.mjs`, checagem do Node no `SessionStart` e testes por fixture cobrindo a tabela do GD-003, o reviewer, o gate do Ship e as mensagens. `commands.test` passa a rodar esses testes. — GD-001, GD-002, GD-003, GD-004, GD-005, GD-006, GD-007
+- [x] **T4** Templates `project.md`, `spec.md` e `change.md` com os schemas. — WS-003, WS-004, WS-005, WS-006, WS-007
+- [x] **T5** Agentes `worker` e `reviewer`; `presets.yaml` com os presets e perfis. — EN-001, RV-002, RV-008, MD-001
+- [x] **T6** Fatia vertical do `/flow`: inicialização, nova mudança, `phases/discovery.md` e `phases/plan.md`, perguntas abertas, gate, prompt de delegação, review `agent + human`, rodadas, `.active`, Log, resumo e falhas. — WF-002, WF-004, WF-006, WF-007, WF-009, WS-002, WS-010, EN-002, EN-003, EN-004, EN-005, EN-006, EN-007, EN-008, EN-010, EN-011, RV-001, RV-007, RV-010, RV-011
 - [ ] **T7** Validar a fatia: criar o projeto de exemplo, levar uma mudança até o Plan aprovado e rodar o reviewer sobre o Plan desta mudança, registrando o parecer em Reviews.
-- [ ] **T8** Replicar para `execute.md` (um worker por task), `verify.md`, `doc.md` e `ship.md`; seleção entre mudanças, retomada, voltar fase, aplicar o delta, ativar specs draft, arquivar, commit e PR. — WF-001, WF-003, WF-005, WF-008, WS-008, EN-012
-- [ ] **T9** Resolução de preset, perfil e overrides; fallback de esforço, valores inválidos e força do reviewer. — RV-003, RV-009, MD-002, MD-003, MD-004, MD-005, MD-006, MD-008
-- [ ] **T10** README: instalação pelo marketplace, uso, schemas, versões mínimas (Claude Code e Node) e limites conhecidos (escrita via Bash, Windows nativo). — WS-009, MD-003, GD-007
+- [x] **T8** Replicar para `execute.md` (um worker por task), `verify.md`, `doc.md` e `ship.md`; seleção entre mudanças, retomada, voltar fase, aplicar o delta, ativar specs draft, arquivar, commit e PR. — WF-001, WF-003, WF-005, WF-008, WS-008, EN-012
+- [x] **T9** Resolução de preset, perfil e overrides; fallback de esforço, valores inválidos e força do reviewer. — RV-003, RV-009, MD-002, MD-003, MD-004, MD-005, MD-006, MD-008
+- [x] **T10** README: instalação pelo marketplace, uso, schemas, versões mínimas (Claude Code e Node) e limites conhecidos (escrita via Bash, Windows nativo). — WS-009, MD-003, GD-007
 - [ ] **T11** Validação ponta a ponta no projeto de exemplo: os cinco critérios de sucesso e a meta do reviewer (Risco 1), com os números registrados em Verify.
 
 ## Verify
@@ -146,7 +152,7 @@ _Pendente: preenchido na fase Verify._
 - discovery · human · APPROVED: decisões fechadas na conversa de 12/10/2026
 - plan · agent · não aplicável: o reviewer é justamente o que esta mudança constrói; ele revisa este Plan no T7
 - plan · human · r1 · CHANGES: (1) Discovery incompatível com subagente; (2) Execute numa única chamada enche o contexto; (3) guard falha em silêncio sem Node; (4) premissas antes de tudo; (5) cortar `auto`, log de eventos e `runtime`; (6) fatia vertical antes de replicar; (7) oráculos com número; (8) decidir as quatro Dúvidas
-- plan · human · r2 · aguardando você
+- plan · human · r2 · APPROVED: "/goal execute" em 12/10/2026
 
 ## Log
 
@@ -154,3 +160,11 @@ _Pendente: preenchido na fase Verify._
 - 2026-10-12 · plan · worker · Claude Opus 5.5 · standard · r1 · escrito; aguardando revisão humana
 - 2026-10-12 · plan · human · standard · r1 · CHANGES; Dúvidas decididas conforme as recomendações
 - 2026-10-12 · plan · worker · Claude Opus 5.5 · standard · r2 · revisado: EN-011, EN-012, GD-007 reescrito, cortes de escopo, Tasks em fatia vertical; aguardando revisão humana
+- 2026-10-12 · plan · human · standard · r2 · APPROVED
+- 2026-10-12 · execute · worker · Claude Opus 5.5 · standard · r1 · T1 parcial: (a) e (b) confirmadas pela doc; (c) pendente, sonda em `tests/premises/run.sh`
+- 2026-10-12 · execute · worker · Claude Opus 5.5 · standard · r1 · T2 parcial: workspace movido para `flow/`, scaffold, `plugin.json` e `marketplace.json`; publicação no GitHub aguardando você
+- 2026-10-12 · execute · worker · Claude Opus 5.5 · standard · r1 · T3 done: `node tests/guard/run.mjs` → 78/78; mutação no guard derruba 7 casos
+- 2026-10-12 · execute · worker · Claude Opus 5.5 · standard · r1 · T4, T5, T6, T8, T9 done; `claude plugin validate --strict` passa em skills e agents
+- 2026-10-12 · execute · worker · Claude Opus 5.5 · standard · r1 · T10 done
+- 2026-10-12 · execute · worker · Claude Opus 5.5 · standard · r1 · T7 e T11 preparados (`tests/example/`, 5 defeitos em `tests/example/DEFECTS.md`); exigem sessão ao vivo com o plugin
+- 2026-10-12 · execute · human · - · standard · r1 · T1 done: sonda no terminal confirmou (a), (b) e (c)

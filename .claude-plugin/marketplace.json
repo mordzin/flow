@@ -1,0 +1,17 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "flow",
+  "description": "Flow: spec-driven development plugin for Claude Code.",
+  "owner": {
+    "name": "Lucas Mordzin",
+    "url": "https://github.com/mordzin"
+  },
+  "plugins": [
+    {
+      "name": "flow",
+      "description": "Six-phase spec-driven flow with per-phase subagents, configurable review and model profiles.",
+      "source": "./",
+      "category": "development"
+    }
+  ]
+}
