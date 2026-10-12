@@ -132,7 +132,7 @@ Os IDs retirados nunca foram ativados e não são reutilizados (WS-004).
 ### Tasks
 
 - [x] **T1** Confirmar com um script mínimo: (a) `agent_type` chega no `PreToolUse` dentro de subagente de plugin; (b) `model` e `effort` por chamada de subagente; (c) a skill dispara subagentes quando instruída. Registrar o resultado em Riscos e ajustar o Plan se alguma falhar. — premissas de EN-001, GD-004, MD-003
-- [ ] **T2** Repositório: `git init`, scaffold, `plugin.json`, mover `flow-v1-spec/flow/` para `flow/` e publicar no GitHub como marketplace. — WS-001
+- [x] **T2** Repositório: `git init`, scaffold, `plugin.json`, mover `flow-v1-spec/flow/` para `flow/` e publicar no GitHub como marketplace. — WS-001
 - [x] **T3** Guard: `hooks.json`, `guard.mjs`, checagem do Node no `SessionStart` e testes por fixture cobrindo a tabela do GD-003, o reviewer, o gate do Ship e as mensagens. `commands.test` passa a rodar esses testes. — GD-001, GD-002, GD-003, GD-004, GD-005, GD-006, GD-007
 - [x] **T4** Templates `project.md`, `spec.md` e `change.md` com os schemas. — WS-003, WS-004, WS-005, WS-006, WS-007
 - [x] **T5** Agentes `worker` e `reviewer`; `presets.yaml` com os presets e perfis. — EN-001, RV-002, RV-008, MD-001
@@ -168,3 +168,4 @@ _Pendente: preenchido na fase Verify._
 - 2026-10-12 · execute · worker · Claude Opus 5.5 · standard · r1 · T10 done
 - 2026-10-12 · execute · worker · Claude Opus 5.5 · standard · r1 · T7 e T11 preparados (`tests/example/`, 5 defeitos em `tests/example/DEFECTS.md`); exigem sessão ao vivo com o plugin
 - 2026-10-12 · execute · human · - · standard · r1 · T1 done: sonda no terminal confirmou (a), (b) e (c)
+- 2026-10-12 · execute · worker · Claude Opus 5.5 · standard · r1 · T2 done: push em `main` (e306ae6), repositório `mordzin/flow` público como marketplace
